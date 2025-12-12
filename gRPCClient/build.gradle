@@ -7,7 +7,7 @@ plugins {
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-description = 'gRPCClient project for Spring Boot'
+description = 'Demo project for Spring Boot'
 
 java {
 	toolchain {
@@ -45,8 +45,38 @@ dependencies {
 
 	//javaTM platform api
 	compileOnly 'javax.annotation:javax.annotation-api:1.3.2'
+
 }
 
+
+protobuf{
+	protoc{
+		artifact = "com.google.protobuf:protoc:3.25.1"
+	}
+
+	plugins {
+		grpc {
+			artifact = "io.grpc:protoc-gen-grpc-java:1.60.1"
+		}
+	}
+	generateProtoTasks{
+		all()*.plugins {
+			grpc{}
+		}
+	}
+}
+
+sourceSets {
+	main {
+		proto {
+			srcDir 'src/main/proto'
+		}
+	}
+}
+
+processResources {
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
 tasks.named('test') {
 	useJUnitPlatform()
 }
