@@ -1,8 +1,8 @@
 package com.example.gRPCClient.client;
 
-import com.example.gRPCClient.SampleServiceGrpc;
-import com.example.gRPCClient.SampleRequest;
-import com.example.gRPCClient.SampleResponse;
+import com.example.gRPCServer.SampleServiceGrpc;
+import com.example.gRPCServer.SampleRequest;
+import com.example.gRPCServer.SampleResponse;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import org.springframework.beans.factory.annotation.Value;
